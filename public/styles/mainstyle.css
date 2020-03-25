@@ -1,0 +1,93 @@
+.md-button{
+    text-transform: capitalize !important;
+}
+
+md-toolbar.left-toolbar{
+    background: #A60906;
+}
+
+md-toolbar.main-toolbar{
+    background: #e01d1d; /*#A60906;/*#1E7517;*/
+}
+
+md-icon.app-icons{
+    margin: 5px;
+}
+
+p#hint-user{
+    margin-left: 5%;
+    font-size: 85%;
+    font-weight: 200%;
+    color: #156aebe8;
+}
+
+div.main-content{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+
+p.stat-content{
+	font-size: 19px;
+}
+
+span.warning{
+	color: #ffae00;
+	font-size: 19px;
+}
+
+span.alert{
+	color: #f70000;
+	font-size: 19px;
+}
+
+span.relax{
+	color: #3ce504;
+	font-size: 19px;
+}
+
+h1.service-description{
+    color: #32326b;
+}
+
+table.meta-info-table{
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+
+md-list{
+    padding: 5px;
+}
+
+md-card{
+    background: #f6ffed;
+}
+
+md-card-header-text {
+    color: #a0d911;
+}
+
+@media handheld{
+    md-card{
+        width: 120px;
+
+    }
+    .card-contents{
+        margin-left: 5px;
+    }
+}
+
+@media screen{
+    md-list{
+        marign-top: 10px;
+    }
+    md-card{        
+        width: 580px;
+    }
+
+    div.card-contents{
+        justify-content: left;
+        height: 80px;
+        margin: 10px;
+    }
+
+}

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+
+<head>
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-153233624-3"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-153233624-3');
+	</script>
+
+
+    <title>Pandora-19</title>
+    <meta charset="utf-8">    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
+    <meta http-equip="X-UA-Compatible" content="IE=edge">
+
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#d13232">
+
+    <link rel="stylesheet" href="scripts/angular-material-1.1.12/angular-material.min.css">
+    <link rel="stylesheet" href="styles/material-design-icon-fonts/icon-font-include.css">
+    <link rel="stylesheet" href="styles/mainstyle.css">    
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
+</head>
+
+<body layout="row" flex ng-app="App" ng-controller="mainController" ng-cloak>
+
+    <md-sidenav layout="column" flex md-component-id="left" class="md-sidenav-left">
+        <md-toolbar class="md-tall md-hue-10 left-toolbar">
+            <div layout="column" flex layout-align="start center" class="md-toolbar-tools menu">
+                <div layout-align="center">
+                	<div layout="row" layout-align="center end">
+                    <img src="images/icons/icon-128x128.png">
+                    
+                	</div>                    
+                </div>               
+            </div>
+        </md-toolbar>
+        <!--<style="background-color: #A60906">-->
+        <div layout="column" flex layout-align="start">
+            <p id="hint-user">Get latest statistics</p>
+
+             <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!myanmar">Myanmar statistics</md-button>
+
+            <md-button ng-click="toggleLeftMenu()" class="md-raised menu-links" href="#!global">Global statistics</md-button>
+
+            <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!about">About</md-button>
+
+        </div>
+    </md-sidenav>
+
+    <div layout="column" flex layout-fill role="main" class="relative">
+        <md-toolbar class="animate-show md md-whiteframe-z1 main-toolbar">
+            <div layout="row" flex class="md-toolbar-tools">
+                <md-button ng-click="toggleLeftMenu()">
+                    <md-icon>menu</md-icon>
+                </md-button>
+                <h2 id="app-name">Pandora-19</h2>
+                <md-button href="#!">
+                    <md-icon>home</md-icon>
+                </md-button>                
+            </div>
+        </md-toolbar>
+
+        <div layout="column" flex layout-align="start" class="main-content">
+            <div class="app-description">
+                <p style="color: #876800;">Help stop the virus by acquiring informative and accurate data</p>
+                <!--<img src="images/banner.png">-->
+            </div>
+            <div ng-view></div>
+
+            <script type="text/ng-template" id="myanmar.html">
+                <h1 class="service-description">Myanmar's COVID situation as of {{date}} {{time}}</h1>
+                <div layout="column">
+                	<div>
+                		<span><p class="stat-content">Confirmed new cases: </p></span> <span class="alert">{{newCases}}</span>
+                	</div>
+                	<div>
+                		<span><p class="stat-content">Active cases: </p></span> <span class="warning">{{activeCases}}</span>
+                	</div>
+                	<div>
+                		<span><p class="stat-content">Patients with critical condition: </p></span> <span class="alert">{{criticalCases}}</span>
+                	</div>
+                	<div>
+                		<span><p class="stat-content">Recovered patients: </p></span> <span class="relax">{{recoveredCases}}</span>
+                	</div>
+                	<div>
+                		<span><p class="stat-content">Total confirmed cases: </p></span> <span class="warning">{{totalCases}}</span>
+                	</div>
+                </div>                     
+            </script>
+
+            <script type="text/ng-template" id="global.html">
+                <h1 class="service-description">Global COVID situation as of {{date}} {{time}}</h1>
+                <div layout="row">
+                	<div>
+                		<h4>Total cases since 22<sup>nd</sup>, Janurary, 2020</h4>
+                		<div>
+                		<span><p class="stat-content">Total Confirmed cases: </p></span> <span class="alert">{{totalCases}}</span>
+                		</div>
+                		<div>
+                		<span><p class="stat-content">Total fatalities: </p></span> <span class="warning">{{totalDeaths}}</span>
+                		</div>
+                		<div>
+                		<span><p class="stat-content">Total recovered patients: </p></span> <span class="alert">{{totalRecovered}}</span>
+                		</div>
+                	</div>
+                	<div style="margin-left: 25px;">
+                		<h4>Latest new cases since 22<sup>nd</sup>, Janurary, 2020</h4>
+                		<div>
+                		<span><p class="stat-content">Latest new cases: </p></span> <span class="alert">{{newCases}}</span>
+                		</div>
+                		<div>
+                		<span><p class="stat-content">Latest new fatalites: </p></span> <span class="warning">{{newDeaths}}</span>
+                		</div>
+                	</div>
+                </div>           
+            </script>
+
+            <script type="text/ng-template" id="about.html">
+                <h1 class="service-description">COVID-19 Pandemic Information App</h1>
+                <p>An app to track the outbreak of pandemic in Myanmar.</p>               
+                <p>Made with love from Major San, this app is a prototype and fastly developed with data from RAPID API.</p>
+                <p>The project is Written with AngularJS 1.7 and runs on Google's Firebase. I hope to add more contents with Burmese in later versions.</p>
+            </script>
+
+            <script type="text/ng-template" id="page-four.html">
+                <h1 class="service-description">Page Four Description</h1>                
+            </script>
+
+        </div>
+    </div>
+
+</body>
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.5.0/firebase-analytics.js"></script>
+
+<!-- Initialize Firebase -->
+<script> 
+// Your web app's Firebase configuration
+  	var firebaseConfig = {
+    	apiKey: "AIzaSyAkKauTjLTy79dq2t6af8ctQMUPkgaUirE",
+    	authDomain: "pandora-19-covid-tracker.firebaseapp.com",
+    	databaseURL: "https://pandora-19-covid-tracker.firebaseio.com",
+    	projectId: "pandora-19-covid-tracker",
+    	storageBucket: "pandora-19-covid-tracker.appspot.com",
+    	messagingSenderId: "302219097840",
+    	appId: "1:302219097840:web:8c1c758b05e6b21cd97435",
+    	measurementId: "G-Z6XKDSYENF"
+  	};
+  	firebase.initializeApp(firebaseConfig);
+  	firebase.analytics();
+</script>
+<!-- Angular.js Libraries-->
+<script src="scripts/angular-1.7.8/angular.min.js"></script>
+<script src="scripts/angular-1.7.8/angular-animate.min.js"></script>
+<script src="scripts/angular-1.7.8/angular-aria.min.js"></script>
+<script src="scripts/angular-1.7.8/angular-messages.min.js"></script>
+<script src="scripts/angular-1.7.8/angular-route.min.js"></script>
+
+<!-- Angular Material Libraries-->
+<script src="scripts/angular-material-1.1.12/angular-material.min.js"></script>
+
+<!-- Application bootstrap-->
+<script src="scripts/App.js"></script>
+
+<!-- Service Worker load-->
+<script src="service-worker.js">
+	
+</script>
+
+</html>
