@@ -1,6 +1,8 @@
 var App = angular.module("App",['ngMaterial','ngMessages','ngRoute']);
 App.value("my_stat","https://covid-193.p.rapidapi.com/statistics?country=Myanmar");
 App.value("world_stat","https://coronavirus-monitor.p.rapidapi.com/coronavirus/worldstat.php");
+//App.value("stud_my_stat","http://192.168.43.64:8500/my-stat.php");
+//App.value("stud_world_stat","http://192.168.43.64:8500/world-stat.php");
 App.value("api_key", "db232e08a0msh475843905294660p11e025jsn03fdea6e59f0");
 App.value("proj", "COVID-Info");
 
@@ -15,22 +17,26 @@ if(day<10)
 hour = now.getHours();
 part_of_day = "AM";
 if(hour<10)
-    hour = "0" + hour;
-if(hour>12)
 {
-	hour -= 12;
 	hour = "0" + hour;
 }
-	
-	
+    
+if(hour>12)
+{
 	part_of_day = "PM";
+	hour -= 12;
+	if(hour<10){
+		hour = "0" + hour;
+	}
+	
+}	
+	
+	
 minute = now.getMinutes();
 if(minute<10)
     minute = "0" + minute;
 var date = year + "-" + month+ "-" + day;
 var time = hour + ":" + minute + part_of_day;
-//console.log(date);
-//console.log(time);
 
 App.value("date", date);
 App.value("time", time);

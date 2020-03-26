@@ -38,13 +38,13 @@
                 </div>               
             </div>
         </md-toolbar>
-        <!--<style="background-color: #A60906">-->
+        
         <div layout="column" flex layout-align="start">
             <p id="hint-user">Get latest statistics</p>
 
-             <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!myanmar">Myanmar statistics</md-button>
+             <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!myanmar">မြန်မာနိုင်ငံမှ အချက်အလက်များ</md-button>
 
-            <md-button ng-click="toggleLeftMenu()" class="md-raised menu-links" href="#!global">Global statistics</md-button>
+            <md-button ng-click="toggleLeftMenu()" class="md-raised menu-links" href="#!global">ကမ္ဘာတစ်၀ှမ်းမှ အချက်အလက်များ</md-button>
 
             <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!about">About</md-button>
 
@@ -66,64 +66,136 @@
 
         <div layout="column" flex layout-align="start" class="main-content">
             <div class="app-description">
-                <p style="color: #876800;">Help stop the virus by acquiring informative and accurate data</p>
-                <!--<img src="images/banner.png">-->
+                <p style="color: #876800; font-size: 15px;">မှန်ကန်တိကျသော အချက်အလက်များဖြင့် COVID-19 ပြန့်နှံ့မှုကို ရင်ဆိုင်တားဆီးကြပါစို့</p>
             </div>
             <div ng-view></div>
 
             <script type="text/ng-template" id="myanmar.html">
-                <h1 class="service-description">Myanmar's COVID situation as of {{date}} {{time}}</h1>
+                <h1 class="service-description">{{date}} {{time}} ၌ မြန်မာနိုင်ငံ၏ COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
                 <div layout="column">
                 	<div>
-                		<span><p class="stat-content">Confirmed new cases: </p></span> <span class="alert">{{newCases}}</span>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">လူနာအသစ်တွေ့ရှိမှု :</p></td>
+                					<td><p class="alert table-data"> {{newCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
                 	</div>
                 	<div>
-                		<span><p class="stat-content">Active cases: </p></span> <span class="warning">{{activeCases}}</span>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ဖြစ်ပွားဆဲလူနာများ :</p></td>
+                					<td><p class="warning table-data"> {{activeCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
                 	</div>
+
                 	<div>
-                		<span><p class="stat-content">Patients with critical condition: </p></span> <span class="alert">{{criticalCases}}</span>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ရောဂါပြင်းထန်လူနာများ :</p></td>
+                					<td><p class="alert table-data"> {{criticalCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
                 	</div>
+
                 	<div>
-                		<span><p class="stat-content">Recovered patients: </p></span> <span class="relax">{{recoveredCases}}</span>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ဆေးရုံဆင်းလူနာများ :</p></td>
+                					<td><p class="relax table-data"> {{recoveredCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
                 	</div>
+                	
                 	<div>
-                		<span><p class="stat-content">Total confirmed cases: </p></span> <span class="warning">{{totalCases}}</span>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">အတည်ပြုပြီး စုစုပေါင်း :</p></td>
+                					<td><p class="warning table-data"> {{totalCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
                 	</div>
                 </div>                     
             </script>
 
             <script type="text/ng-template" id="global.html">
-                <h1 class="service-description">Global COVID situation as of {{date}} {{time}}</h1>
-                <div layout="row">
+                <h1 class="service-description">{{date}} {{time}} ၌ ကမ္ဘာတစ်၀ှမ်း COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
+                <div layout="column">
                 	<div>
-                		<h4>Total cases since 22<sup>nd</sup>, Janurary, 2020</h4>
+                		<h4>ရောဂါပြန့်ပွားမှုစတင်ချိန်မှ ယနေ့ထိစုစုပေါင်း</h4>
                 		<div>
-                		<span><p class="stat-content">Total Confirmed cases: </p></span> <span class="alert">{{totalCases}}</span>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ဖြစ်ပွားသူ :</p></td>
+                						<td><p class="alert table-data">{{totalCases}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
                 		</div>
                 		<div>
-                		<span><p class="stat-content">Total fatalities: </p></span> <span class="warning">{{totalDeaths}}</span>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">သေဆုံးသူ :</p></td>
+                						<td><p class="warning table-data">{{totalDeaths}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
                 		</div>
                 		<div>
-                		<span><p class="stat-content">Total recovered patients: </p></span> <span class="alert">{{totalRecovered}}</span>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ကျန်းမာလာသူ :</p></td>
+                						<td><p class="relax table-data">{{totalRecovered}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
                 		</div>
                 	</div>
-                	<div style="margin-left: 25px;">
-                		<h4>Latest new cases since 22<sup>nd</sup>, Janurary, 2020</h4>
+                	<div>
+                		<h4>နောက်ဆုံးရ အချက်အလက်များအရ</h4>
                 		<div>
-                		<span><p class="stat-content">Latest new cases: </p></span> <span class="alert">{{newCases}}</span>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ထပ်တိုး လူနာများ :</p></td>
+                						<td><p class="alert table-data">{{newCases}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
                 		</div>
                 		<div>
-                		<span><p class="stat-content">Latest new fatalites: </p></span> <span class="warning">{{newDeaths}}</span>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ထပ်တိုး သေဆုံးသူများ :</p></td>
+                						<td><p class="warning table-data">{{newDeaths}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
                 		</div>
-                	</div>
+                	</div>              	
                 </div>           
             </script>
 
             <script type="text/ng-template" id="about.html">
-                <h1 class="service-description">COVID-19 Pandemic Information App</h1>
+                <h1 class="service-description">COVID-19 Pandemic Information App (version 1.1)</h1>
                 <p>An app to track the outbreak of pandemic in Myanmar.</p>               
                 <p>Made with love from Major San, this app is a prototype and fastly developed with data from RAPID API.</p>
-                <p>The project is Written with AngularJS 1.7 and runs on Google's Firebase. I hope to add more contents with Burmese in later versions.</p>
+                <p>The project is Written with AngularJS 1.7 and runs on Google's Firebase. I hope to add more contents with Burmese as well as English in later versions.</p>
             </script>
 
             <script type="text/ng-template" id="page-four.html">
@@ -157,6 +229,7 @@
   	firebase.initializeApp(firebaseConfig);
   	firebase.analytics();
 </script>
+
 <!-- Angular.js Libraries-->
 <script src="scripts/angular-1.7.8/angular.min.js"></script>
 <script src="scripts/angular-1.7.8/angular-animate.min.js"></script>
@@ -171,8 +244,6 @@
 <script src="scripts/App.js"></script>
 
 <!-- Service Worker load-->
-<script src="service-worker.js">
-	
-</script>
+<script src="service-worker.js"></script>
 
 </html>

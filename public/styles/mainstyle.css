@@ -7,7 +7,7 @@ md-toolbar.left-toolbar{
 }
 
 md-toolbar.main-toolbar{
-    background: #e01d1d; /*#A60906;/*#1E7517;*/
+    background: #e01d1d;
 }
 
 md-icon.app-icons{
@@ -26,27 +26,31 @@ div.main-content{
     margin-left: 50px;
 }
 
-p.stat-content{
-	font-size: 19px;
+p.table-content{
+	font-size: 23px;
 }
 
-span.warning{
+p.table-data{
+	margin-left: 20px;
+    margin-bottom: 28px;
+	font-size: 23px;
+}
+
+p.warning{
 	color: #ffae00;
-	font-size: 19px;
 }
 
-span.alert{
-	color: #f70000;
-	font-size: 19px;
+p.alert{    
+	color: #f70000;	
 }
 
-span.relax{
+p.relax{
 	color: #3ce504;
-	font-size: 19px;
 }
 
 h1.service-description{
     color: #32326b;
+    font-size: 18px;
 }
 
 table.meta-info-table{
