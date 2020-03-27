@@ -1,4 +1,4 @@
-var cache_name = "app-cache-v1";
+var cache_name = "app-cache-v2";
 var urlsToCache = [
 	'/',
 	'/index.html',
@@ -58,7 +58,6 @@ self.addEventListener('install', function(event){
 			return cache.addAll(urlsToCache);
 		})
 	);
-	
 });
 
 self.addEventListener('fetch', function(event){
@@ -74,5 +73,4 @@ self.addEventListener('fetch', function(event){
 
 		);
 	}
-	
 });

@@ -46,7 +46,9 @@
 
             <md-button ng-click="toggleLeftMenu()" class="md-raised menu-links" href="#!global">ကမ္ဘာတစ်၀ှမ်းမှ အချက်အလက်များ</md-button>
 
-            <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!about">About</md-button>
+            <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!bycountry">နိုင်ငံအလိုက် အချက်အလက်များ</md-button>
+
+            <md-button ng-click="toggleLeftMenu()" class="md-raised menu-links" href="#!about">About</md-button>
 
         </div>
     </md-sidenav>
@@ -191,17 +193,100 @@
                 </div>           
             </script>
 
+            <script type="text/ng-template" id="bycountry.html">
+                <h4 class="service-description">နိုင်ငံအလိုက်ရှာရန်</h1>
+                <div>
+                	<div>
+                		<md-radio-group ng-model="inputMode" ng-change="radioChanged()">
+                			<md-radio-button value="fromMenu">အသင့်ရွေးမည်</md-radio-button>
+                			<md-radio-button value="fromInput">ကိုယ်တိုင်ရိုက်ထည့်မည်</md-radio-button>
+                		</md-radio-group>                		               		
+                	</div>
+                	<div>
+                		<md-input-container ng-show="enterManually">
+                			<label>နိုင်ငံအမည် (အင်္ဂလိပ်လို)</label>
+                			<input ng-change="textChanged()" type="text" ng-model="selectedCountry"/>
+                		</md-input-container>
+
+                		<md-input-container ng-show="selectFromMenu">
+                			<label>နိုင်ငံအမည်</label>
+                			<md-select ng-model="selectedCountry" ng-change="selectChanged()" placeholder="နိုင်ငံအမည်ရွေးပါ" >
+                				<md-option ng-value="country" ng-repeat="country in listOfCountries">
+                					{{country}}
+                				</md-option>
+                			</md-select>
+                		</md-input-container>                		
+                	</div>
+                	<div>
+                		<md-button class="md-primary md-raised" ng-click="getData()">အချက်အလက်ပြရန်</md-button>
+                	</div> 
+                </div>
+                <div ng-show="country_stat">
+                <h1 class="service-description">{{date}} {{time}} ၌ {{selectedCountry}} နိုင်ငံ၏ COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
+                <div layout="column">
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">လူနာအသစ်တွေ့ရှိမှု :</p></td>
+                					<td><p class="alert table-data"> {{newCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ဖြစ်ပွားဆဲလူနာများ :</p></td>
+                					<td><p class="warning table-data"> {{activeCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ရောဂါပြင်းထန်လူနာများ :</p></td>
+                					<td><p class="alert table-data"> {{criticalCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ဆေးရုံဆင်းလူနာများ :</p></td>
+                					<td><p class="relax table-data"> {{recoveredCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+                	
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">အတည်ပြုပြီး စုစုပေါင်း :</p></td>
+                					<td><p class="warning table-data"> {{totalCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+                </div>
+                </div>                
+            </script>
+
             <script type="text/ng-template" id="about.html">
-                <h1 class="service-description">COVID-19 Pandemic Information App (version 1.1)</h1>
+                <h1 class="service-description">COVID-19 Pandemic Information App (version 1.2)</h1>
                 <p>An app to track the outbreak of pandemic in Myanmar.</p>               
                 <p>Made with love from Major San, this app is a prototype and fastly developed with data from RAPID API.</p>
                 <p>The project is Written with AngularJS 1.7 and runs on Google's Firebase. I hope to add more contents with Burmese as well as English in later versions.</p>
             </script>
-
-            <script type="text/ng-template" id="page-four.html">
-                <h1 class="service-description">Page Four Description</h1>                
-            </script>
-
         </div>
     </div>
 
