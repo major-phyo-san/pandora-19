@@ -1,2 +1,2 @@
 # pandora-19
- COVID-19 Info web app
+ COVID-19 Information web application for Myanmar
