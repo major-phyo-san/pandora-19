@@ -42,7 +42,7 @@
         <div layout="column" flex layout-align="start">
             <p id="hint-user">Get latest statistics</p>
 
-             <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!myanmar">မြန်မာနိုင်ငံမှ အချက်အလက်များ</md-button>
+            <md-button ng-click="toggleLeftMenu()" class="md-primary md-raised menu-links" href="#!">မြန်မာနိုင်ငံမှ အချက်အလက်များ</md-button>
 
             <md-button ng-click="toggleLeftMenu()" class="md-raised menu-links" href="#!global">ကမ္ဘာတစ်၀ှမ်းမှ အချက်အလက်များ</md-button>
 
@@ -54,32 +54,35 @@
     </md-sidenav>
 
     <div layout="column" flex layout-fill role="main" class="relative">
-        <md-toolbar class="animate-show md md-whiteframe-z1 main-toolbar">
-            <div layout="row" flex class="md-toolbar-tools">
-                <md-button ng-click="toggleLeftMenu()">
-                    <md-icon>menu</md-icon>
-                </md-button>
-                <h2 id="app-name">Pandora-19</h2>
-                <md-button href="#!">
-                    <md-icon>home</md-icon>
-                </md-button>                
-            </div>
-        </md-toolbar>
+    	<div>
+    		<md-toolbar style="position: fixed; width: 100%;" class=" animate-show md md-whiteframe-z1 main-toolbar">
+            	<div layout="row" flex class="md-toolbar-tools">
+                	<md-button ng-click="toggleLeftMenu()">
+                    	<md-icon>menu</md-icon>
+                	</md-button>
+                	<h2 id="app-name">Pandora-19</h2>
+                	<md-button href="#!">
+                    	<md-icon>home</md-icon>
+                	</md-button>                
+            	</div>
+        	</md-toolbar>
+    	</div>
+        <div id="app-description">
+             <p style="color: #876800; font-size: 13px;">မှန်ကန်တိကျသော အချက်အလက်များဖြင့် COVID-19 ကပ်ရောဂါကို ရင်ဆိုင်တားဆီးကြပါစို့</p>
+        </div>
 
         <div layout="column" flex layout-align="start" class="main-content">
-            <div class="app-description">
-                <p style="color: #876800; font-size: 15px;">မှန်ကန်တိကျသော အချက်အလက်များဖြင့် COVID-19 ပြန့်နှံ့မှုကို ရင်ဆိုင်တားဆီးကြပါစို့</p>
-            </div>
             <div ng-view></div>
-
+            <div>
             <script type="text/ng-template" id="myanmar.html">
-                <h1 class="service-description">{{date}} {{time}} ၌ မြန်မာနိုင်ငံ၏ COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
-                <div layout="column">
+                <h1 class="service-description" ng-show="myanmar_stat">{{date(datetimeobj)}} {{time(datetimeobj)}} အချိန် နောက်ဆုံးရ မြန်မာနိုင်ငံ၏ COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
+                <p class="alert" ng-show="!myanmar_stat">{{data_status}}</p>
+                <div layout="column" ng-show="myanmar_stat">
                 	<div>
                 		<table>
                 			<tbody>
                 				<tr>
-                					<td><p class="table-content">လူနာအသစ်တွေ့ရှိမှု :</p></td>
+                					<td><p class="table-content">လူနာအသစ် :</p></td>
                 					<td><p class="alert table-data"> {{newCases}} </p></td>
                 				</tr>
                 			</tbody>
@@ -89,7 +92,7 @@
                 		<table>
                 			<tbody>
                 				<tr>
-                					<td><p class="table-content">ဖြစ်ပွားဆဲလူနာများ :</p></td>
+                					<td><p class="table-content">ကုသဆဲလူနာ :</p></td>
                 					<td><p class="warning table-data"> {{activeCases}} </p></td>
                 				</tr>
                 			</tbody>
@@ -100,7 +103,7 @@
                 		<table>
                 			<tbody>
                 				<tr>
-                					<td><p class="table-content">ရောဂါပြင်းထန်လူနာများ :</p></td>
+                					<td><p class="table-content">ရောဂါပြင်းထန်လူနာ :</p></td>
                 					<td><p class="alert table-data"> {{criticalCases}} </p></td>
                 				</tr>
                 			</tbody>
@@ -111,29 +114,61 @@
                 		<table>
                 			<tbody>
                 				<tr>
-                					<td><p class="table-content">ဆေးရုံဆင်းလူနာများ :</p></td>
+                					<td><p class="table-content">ထပ်တိုးသေဆုံးသူ :</p></td>
+                					<td><p class="alert table-data"> {{newDeaths}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">စုစုပေါင်းသေဆုံးသူ :</p></td>
+                					<td><p class="warning table-data"> {{totalDeaths}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ဆေးရုံဆင်းလူနာ :</p></td>
                 					<td><p class="relax table-data"> {{recoveredCases}} </p></td>
                 				</tr>
                 			</tbody>
                 		</table>
                 	</div>
-                	
                 	<div>
                 		<table>
                 			<tbody>
                 				<tr>
-                					<td><p class="table-content">အတည်ပြုပြီး စုစုပေါင်း :</p></td>
-                					<td><p class="warning table-data"> {{totalCases}} </p></td>
+                					<td><p class="table-content">ရောဂါပိုးစစ်ဆေးမှုပေါင်း :</p></td>
+                					<td><p class="warning table-data"> {{testedCases}} </p></td>
                 				</tr>
                 			</tbody>
                 		</table>
                 	</div>
-                </div>                     
+                	<div>
+                		<table>
+                			<tbody>
+                				<tr>
+                					<td><p class="table-content">ပိုးတွေ့ရှိမှုစုစုပေါင်း :</p></td>
+                					<td><p class="alert table-data"> {{totalCases}} </p></td>
+                				</tr>
+                			</tbody>
+                		</table>
+                	</div>
+                </div>                  
             </script>
 
             <script type="text/ng-template" id="global.html">
-                <h1 class="service-description">{{date}} {{time}} ၌ ကမ္ဘာတစ်၀ှမ်း COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
-                <div layout="column">
+                <h1 class="service-description" ng-show="world_stat">{{datetime}} ၌ ကမ္ဘာတစ်၀ှမ်း COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
+                <p class="alert" ng-show="!world_stat">{{data_status}}</p>
+                <div layout="column" ng-show="world_stat">
                 	<div>
                 		<h4>ရောဂါပြန့်ပွားမှုစတင်ချိန်မှ ယနေ့ထိစုစုပေါင်း</h4>
                 		<div>
@@ -168,12 +203,12 @@
                 		</div>
                 	</div>
                 	<div>
-                		<h4>နောက်ဆုံးရ အချက်အလက်များအရ</h4>
+                		<h4>နောက်ဆုံးရ အချက်အလက်များ</h4>
                 		<div>
                 			<table>
                 				<tbody>
                 					<tr>
-                						<td><p class="table-content">ထပ်တိုး လူနာများ :</p></td>
+                						<td><p class="table-content">လူနာအသစ် :</p></td>
                 						<td><p class="alert table-data">{{newCases}}</p></td>
                 					</tr>
                 				</tbody>
@@ -183,7 +218,7 @@
                 			<table>
                 				<tbody>
                 					<tr>
-                						<td><p class="table-content">ထပ်တိုး သေဆုံးသူများ :</p></td>
+                						<td><p class="table-content">ထပ်တိုးသေဆုံးသူ :</p></td>
                 						<td><p class="warning table-data">{{newDeaths}}</p></td>
                 					</tr>
                 				</tbody>
@@ -195,19 +230,15 @@
 
             <script type="text/ng-template" id="bycountry.html">
                 <h4 class="service-description">နိုင်ငံအလိုက်ရှာရန်</h1>
-                <div>
-                	<div>
+                <div id="input-group">                	
                 		<md-radio-group ng-model="inputMode" ng-change="radioChanged()">
                 			<md-radio-button value="fromMenu">အသင့်ရွေးမည်</md-radio-button>
                 			<md-radio-button value="fromInput">ကိုယ်တိုင်ရိုက်ထည့်မည်</md-radio-button>
-                		</md-radio-group>                		               		
-                	</div>
-                	<div>
+                		</md-radio-group>  <br/>        		               		
                 		<md-input-container ng-show="enterManually">
                 			<label>နိုင်ငံအမည် (အင်္ဂလိပ်လို)</label>
                 			<input ng-change="textChanged()" type="text" ng-model="selectedCountry"/>
-                		</md-input-container>
-
+                		</md-input-container> <br/>
                 		<md-input-container ng-show="selectFromMenu">
                 			<label>နိုင်ငံအမည်</label>
                 			<md-select ng-model="selectedCountry" ng-change="selectChanged()" placeholder="နိုင်ငံအမည်ရွေးပါ" >
@@ -215,78 +246,109 @@
                 					{{country}}
                 				</md-option>
                 			</md-select>
-                		</md-input-container>                		
-                	</div>
-                	<div>
-                		<md-button class="md-primary md-raised" ng-click="getData()">အချက်အလက်ပြရန်</md-button>
-                	</div> 
+                		</md-input-container> <br/>
+                		<md-button class="md-primary md-raised" ng-click="getData()">အချက်အလက်ပြရန်</md-button>                	 
                 </div>
+
                 <div ng-show="country_stat">
-                <h1 class="service-description">{{date}} {{time}} ၌ {{selectedCountry}} နိုင်ငံ၏ COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
-                <div layout="column">
-                	<div>
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td><p class="table-content">လူနာအသစ်တွေ့ရှိမှု :</p></td>
-                					<td><p class="alert table-data"> {{newCases}} </p></td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
-                	<div>
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td><p class="table-content">ဖြစ်ပွားဆဲလူနာများ :</p></td>
-                					<td><p class="warning table-data"> {{activeCases}} </p></td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
+                	<h1 class="service-description">{{date(datetimeobj)}} {{time(datetimeobj)}} အချိန် နောက်ဆုံးရ {{selectedCountry}} နိုင်ငံ၏ COVID-19 ဖြစ်ပွားမှု အခြေအနေ</h1>
+                	<div layout="column">
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">လူနာအသစ် :</p></td>
+                						<td><p class="alert table-data"> {{newCases}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ကုသဆဲလူနာ :</p></td>
+                						<td><p class="warning table-data"> {{activeCases}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
 
-                	<div>
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td><p class="table-content">ရောဂါပြင်းထန်လူနာများ :</p></td>
-                					<td><p class="alert table-data"> {{criticalCases}} </p></td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ရောဂါပြင်းထန်လူနာ :</p></td>
+                						<td><p class="alert table-data"> {{criticalCases}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
 
-                	<div>
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td><p class="table-content">ဆေးရုံဆင်းလူနာများ :</p></td>
-                					<td><p class="relax table-data"> {{recoveredCases}} </p></td>
-                				</tr>
-                			</tbody>
-                		</table>
-                	</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ထပ်တိုးသေဆုံးသူ :</p></td>
+                						<td><p class="alert table-data"> {{newDeaths}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">စုစုပေါင်းသေဆုံးသူ :</p></td>
+                						<td><p class="warning table-data"> {{totalDeaths}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ဆေးရုံဆင်းလူနာ :</p></td>
+                						<td><p class="relax table-data"> {{recoveredCases}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
                 	
-                	<div>
-                		<table>
-                			<tbody>
-                				<tr>
-                					<td><p class="table-content">အတည်ပြုပြီး စုစုပေါင်း :</p></td>
-                					<td><p class="warning table-data"> {{totalCases}} </p></td>
-                				</tr>
-                			</tbody>
-                		</table>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ရောဂါပိုးစစ်ဆေးမှုပေါင်း :</p></td>
+                						<td><p class="warning table-data"> {{testedCases}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ပိုးတွေ့ရှိမှုစုစုပေါင်း :</p></td>
+                						<td><p class="alert table-data"> {{totalCases}} </p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
                 	</div>
-                </div>
-                </div>                
+                </div>               
             </script>
 
             <script type="text/ng-template" id="about.html">
-                <h1 class="service-description">COVID-19 Pandemic Information App (version 1.2)</h1>
-                <p>An app to track the outbreak of pandemic in Myanmar.</p>               
-                <p>Made with love from Major San, this app is a prototype and fastly developed with data from RAPID API.</p>
-                <p>The project is Written with AngularJS 1.7 and runs on Google's Firebase. I hope to add more contents with Burmese as well as English in later versions.</p>
+                <h1 class="service-description">COVID-19 Pandemic Information App (version 1.6)</h1>
+                <p>An app to track the outbreak of COVID-19 pandemic in Myanmar.</p>               
+                <p>Made with love from Major San, this app is a prototype and fastly developed with data from RAPID API. You can freely contribute and/or share this <a href="https://github.com/major-phyo-san/pandora-19">project</a> under GNU General Public License version 3.0.</p>
+                <p>The app is written with AngularJS 1.7 and runs on Google's Firebase. I hope to add more contents with Burmese as well as English in later versions.</p>
             </script>
+        </div>
         </div>
     </div>
 

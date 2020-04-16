@@ -1,4 +1,5 @@
-var cache_name = "app-cache-v2";
+var cache_name = "app-cache-v6";
+var app_version = "1.6";
 var urlsToCache = [
 	'/',
 	'/index.html',
@@ -31,7 +32,7 @@ if('serviceWorker' in navigator){
 	window.addEventListener('load', function(){
 		navigator.serviceWorker.register('service-worker.js').
 		then(function(registration){
-			console.log("registering");
+			console.log("registered");
 		}, function(err){
 			console.log("not registered");
 		});
@@ -44,8 +45,7 @@ self.addEventListener('install', function(event){
 			return Promise.all(
 				cacheNames.map(function(cacheName){
 						console.log("deleting old caches");
-						return caches.delete(cacheName);
-					
+						return caches.delete(cacheName);					
 					})
 				);
 			})
