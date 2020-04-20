@@ -119,7 +119,7 @@ App.controller("myanmarController", function($scope,$http, stud_my_stat, country
 
 App.controller("globalController", function($scope, $http, stud_world_stat, world_stat_url, api_key, proj){
 	$scope.world_stat = null;
-	$scope.data_status = "ခေတ္တေစောင့်ပါ";
+	$scope.data_status = "ခေတ္တစောင့်ပါ";
     let url = world_stat_url;
     //alert(url);
     let req = {
@@ -204,7 +204,7 @@ App.controller("byCountryController", function($scope, $http, country_stat_url, 
     			//alert(url);
     			req = {
     					method: 'GET',
-    					url: stud_my_stat,
+    					url: url,
     					headers: {
     						'Content-Type': 'application/json',
     						'Access-Control-Allow-Origin': '*',
