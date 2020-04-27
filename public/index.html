@@ -175,41 +175,28 @@
                 			<table>
                 				<tbody>
                 					<tr>
-                						<td><p class="table-content">ဖြစ်ပွားသူ :</p></td>
-                						<td><p class="alert table-data">{{totalCases}}</p></td>
-                					</tr>
-                				</tbody>
-                			</table>
-                		</div>
-                		<div>
-                			<table>
-                				<tbody>
-                					<tr>
-                						<td><p class="table-content">သေဆုံးသူ :</p></td>
-                						<td><p class="warning table-data">{{totalDeaths}}</p></td>
-                					</tr>
-                				</tbody>
-                			</table>
-                		</div>
-                		<div>
-                			<table>
-                				<tbody>
-                					<tr>
-                						<td><p class="table-content">ကျန်းမာလာသူ :</p></td>
-                						<td><p class="relax table-data">{{totalRecovered}}</p></td>
-                					</tr>
-                				</tbody>
-                			</table>
-                		</div>
-                	</div>
-                	<div>
-                		<h4>နောက်ဆုံးရ အချက်အလက်များ</h4>
-                		<div>
-                			<table>
-                				<tbody>
-                					<tr>
                 						<td><p class="table-content">လူနာအသစ် :</p></td>
                 						<td><p class="alert table-data">{{newCases}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ကုသဆဲလူနာ :</p></td>
+                						<td><p class="warning table-data">{{activeCases}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ရောဂါပြင်းထန်လူနာ :</p></td>
+                						<td><p class="alert table-data">{{criticalCases}}</p></td>
                 					</tr>
                 				</tbody>
                 			</table>
@@ -224,7 +211,62 @@
                 				</tbody>
                 			</table>
                 		</div>
-                	</div>              	
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">စုစုပေါင်း သေဆုံးသူ :</p></td>
+                						<td><p class="warning table-data">{{totalDeaths}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ဆေးရုံဆင်းလူနာ :</p></td>
+                						<td><p class="relax table-data">{{totalRecovered}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">ပိုးတွေ့ရှိမှုစုစုပေါင်း :</p></td>
+                						<td><p class="alert table-data">{{totalCases}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                	</div>
+
+                	<div>
+                		<h4>ရောဂါပြန့်ပွားမှု အချက်အလက်များ</h4>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">လူတစ်သန်းတွင် ဖြစ်ပွားနှုန်း :</p></td>
+                						<td><p class="alert table-data">{{totalCasesPOneM}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                		<div>
+                			<table>
+                				<tbody>
+                					<tr>
+                						<td><p class="table-content">လူတစ်သန်းတွင် သေဆုံးနှုန်း :</p></td>
+                						<td><p class="warning table-data">{{deathsCasesPOneM}}</p></td>
+                					</tr>
+                				</tbody>
+                			</table>
+                		</div>
+                	</div>       
                 </div>           
             </script>
 

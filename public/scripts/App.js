@@ -138,11 +138,19 @@ App.controller("globalController", function($scope, $http, stud_world_stat, worl
     .then(function successCallBack(response){
     	$scope.world_stat = response.data;
     	$scope.datetime = $scope.world_stat.statistic_taken_at;
+    	
     	$scope.totalCases = $scope.world_stat.total_cases;
     	$scope.totalDeaths = $scope.world_stat.total_deaths;
     	$scope.totalRecovered = $scope.world_stat.total_recovered;
+
     	$scope.newCases = $scope.world_stat.new_cases;
     	$scope.newDeaths = $scope.world_stat.new_deaths;
+
+    	$scope.activeCases = $scope.world_stat.active_cases;
+    	$scope.criticalCases = $scope.world_stat.serious_critical;
+
+    	$scope.totalCasesPOneM = $scope.world_stat.total_cases_per_1m_population;
+    	$scope.deathsCasesPOneM = $scope.world_stat.deaths_per_1m_population;
 
     },
     	function errorCallBack(response){
