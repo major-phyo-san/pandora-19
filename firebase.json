@@ -3,6 +3,7 @@
     "public": "public",
     "ignore": [
       "firebase.json",
+      "serve.bat",
       "**/.*",
       "**/node_modules/**"
     ],

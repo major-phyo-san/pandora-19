@@ -1,0 +1,1 @@
+firebase serve --host=localhost --port=8900
