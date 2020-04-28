@@ -1,5 +1,5 @@
 var cache_name = "app-cache-v6";
-var app_version = "1.6.3";
+var app_version = "1.6.4";
 var urlsToCache = [
 
 	'/',
